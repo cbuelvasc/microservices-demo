@@ -1,0 +1,7 @@
+.idea
+target
+.mvn
+twitter-to-kafka-service
+logs
+
+HELP.md
