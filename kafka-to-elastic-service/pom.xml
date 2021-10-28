@@ -9,48 +9,52 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>twitter-to-kafka-service</artifactId>
+    <artifactId>kafka-to-elastic-service</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.microservices.demo</groupId>
-            <artifactId>app-config-data</artifactId>
+            <artifactId>elastic-model</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>elastic-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>elastic-index-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>kafka-consumer</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.microservices.demo</groupId>
             <artifactId>kafka-admin</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.microservices.demo</groupId>
-            <artifactId>kafka-producer</artifactId>
+            <artifactId>kafka-model</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.twitter4j</groupId>
-            <artifactId>twitter4j-stream</artifactId>
         </dependency>
     </dependencies>
 
@@ -61,7 +65,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>${project.groupId}/twitter.to.kafka.service:${project.version}</name>
+                        <name>${project.groupId}/kafka.to.elastic.service:${project.version}</name>
                     </image>
                 </configuration>
                 <executions>
@@ -75,4 +79,6 @@
             </plugin>
         </plugins>
     </build>
+
+
 </project>

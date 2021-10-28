@@ -20,3 +20,21 @@ docker-compose -f common.yml -f kafka_cluster.yml -f service.yml down
 or 
 docker-compose down
 ```
+
+## Maven Skip Tests
+```bash
+mvn install -DskipTests
+```
+
+## Permitions check-com.microservices.demo.kafka.consumer.config-server-started file
+```bash
+chmod +x check-com.microservices.demo.kafka.consumer.config-server-started.sh 
+```
+
+##Clear Docker
+```bash
+docker rmi $(docker images -a -q)
+docker volume prune 
+docker system prune
+docker network prune
+```  
