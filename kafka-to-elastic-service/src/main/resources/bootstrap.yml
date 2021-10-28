@@ -1,6 +1,9 @@
 spring:
   application:
     name: kafka-to-elastic-service
+    output:
+      ansi:
+        console-available: true
   profiles:
     active: kafka_to_elastic
   cloud:
