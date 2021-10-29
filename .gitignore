@@ -3,5 +3,6 @@ target
 .mvn
 docker-logs
 logs
+postgres-data
 
 HELP.md
