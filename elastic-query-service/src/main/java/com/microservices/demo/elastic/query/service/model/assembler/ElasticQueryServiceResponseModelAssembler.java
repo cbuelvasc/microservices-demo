@@ -2,8 +2,8 @@ package com.microservices.demo.elastic.query.service.model.assembler;
 
 import com.microservices.demo.elastic.model.index.impl.TwitterIndexModel;
 import com.microservices.demo.elastic.query.service.api.ElasticDocumentController;
-import com.microservices.demo.elastic.query.service.model.ElasticQueryServiceResponseModel;
-import com.microservices.demo.elastic.query.service.transformer.ElasticToResponseModelTransformer;
+import com.microservices.demo.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
+import com.microservices.demo.elastic.query.service.common.transformer.ElasticToResponseModelTransformer;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
-public class ElasticQueryServiceResponseModelAssembler extends RepresentationModelAssemblerSupport<TwitterIndexModel, ElasticQueryServiceResponseModel> {
+public class ElasticQueryServiceResponseModelAssembler
+        extends RepresentationModelAssemblerSupport<TwitterIndexModel, ElasticQueryServiceResponseModel> {
 
     private final ElasticToResponseModelTransformer elasticToResponseModelTransformer;
 

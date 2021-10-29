@@ -1,4 +1,7 @@
 spring:
+  output:
+    ansi:
+      console-available: true
   cloud:
     config:
       allow-override: true
