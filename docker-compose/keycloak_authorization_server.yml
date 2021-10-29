@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+
+  keycloak-authorization-server:
+    image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION:-latest}
+    hostname: keycloak-server
+    ports:
+      - "9091:9091"
+    depends_on:
+      - postgres
+    environment:
+      - "KEYCLOAK_USER=admin"
+      - "KEYCLOAK_PASSWORD=admin"
+      - "JAVA_OPTS=-Djboss.http.port=9091"
+      - "DB_VENDOR=POSTGRES"
+      - "DB_ADDR=host.docker.internal"
+      - "DB_DATABASE=keycloak"
+      - "DB_USER=keycloak"
+      - "DB_SCHEMA=keycloak"
+      - "DB_PASSWORD=keycloak"
+
+  postgres:
+    image: postgres:${POSTGRES_VERSION}
+    hostname: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./sql/create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_DB: keycloak
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "keycloak@keycloak.com"
+      PGADMIN_DEFAULT_PASSWORD: "keycloak"
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
