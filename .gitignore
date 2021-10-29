@@ -1,6 +1,7 @@
 .idea
 target
 .mvn
-docker-compose/docker-logs
+docker-logs
+logs
 
 HELP.md

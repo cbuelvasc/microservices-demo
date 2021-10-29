@@ -14,6 +14,11 @@ or
 docker-compose up -d
 ```
 
+* Run only Elastic
+```bash
+docker-compose -f common.yml -f elastic_cluster.yml up -d
+```
+
 ## Stop docker-compose
 ```bash
 docker-compose -f common.yml -f kafka_cluster.yml -f service.yml down
@@ -28,7 +33,11 @@ mvn install -DskipTests
 
 ## Permitions check-com.microservices.demo.kafka.consumer.config-server-started file
 ```bash
-chmod +x check-com.microservices.demo.kafka.consumer.config-server-started.sh 
+chmod +x check-config-server-started.sh 
+```
+
+```bash
+chmod +x check-kafka-topics-created.sh 
 ```
 
 ##Clear Docker
@@ -38,3 +47,7 @@ docker volume prune
 docker system prune
 docker network prune
 ```  
+
+Open API v3
+http://localhost:8183/elastic-query-service/api-docs.yaml
+http://localhost:8183/elastic-query-service/swagger-ui/index.html?configUrl=/elastic-query-service/api-docs/swagger-config
